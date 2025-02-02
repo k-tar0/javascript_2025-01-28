@@ -5,18 +5,20 @@ for (let i = 6; i >= 2; i--) {
     const storyFilter = arr => 
         arr.filter(guestData => guestData[0] >= i * 100 && guestData[0] < (i + 1) * 100);
     const storyFilteredRooms = [
-        storyFilter(allRoomsAndTime).filter(guestData => guestData[0] >= i * 100 && guestData[0] < i * 100 + 10),
-        storyFilter(allRoomsAndTime).filter(guestData => guestData[0] >= i * 100 + 10 && guestData[0] < i * 100 + 20),
-        storyFilter(allRoomsAndTime).filter(guestData => guestData[0] >= i * 100 + 20 && guestData[0] < i * 100 + 30)
+        storyFilter(allRoomsAndTime)
+        .filter(guestData => guestData[0] >= i * 100 && guestData[0] < i * 100 + 10),
+        storyFilter(allRoomsAndTime)
+        .filter(guestData => guestData[0] >= i * 100 + 10 && guestData[0] < i * 100 + 20),
+        storyFilter(allRoomsAndTime)
+        .filter(guestData => guestData[0] >= i * 100 + 20 && guestData[0] < i * 100 + 30)
     ];
     sortedRooms.push(storyFilteredRooms);
 }
-console.log(sortedRooms[0][0][0][0]);
 
 const floor = '6th floor';
 document.getElementById('floor').innerHTML = floor;
 
-const tableData = sortedRooms[0][2];//sortedRooms.map(room => room[0]).join(' ');  // find every filter are useful instance methods of array
+const tableData = sortedRooms[0][2].map(room => room[0]).join(', '); // Extract room numbers and join them with a comma
 document.getElementById('tableData1').innerHTML = tableData;
 
 const tableData2 = sortedRooms[0][1];
