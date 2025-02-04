@@ -1,6 +1,7 @@
-floorTable = document.getElementById('floorTable');
+// floorTable = document.getElementById('floorTable');
 
-sixthFloor = document.getElementById('sixthFloor');
+const makeSixthFloor = document.createElement('tr');
+const sixthFloor = floorTable.appendChild(makeSixthFloor);
 const makeTh = document.createElement('th');
 const makeText = document.createTextNode(floorNames[0]);
 sixthFloor.appendChild(makeTh).appendChild(makeText);
@@ -12,7 +13,8 @@ sixthFloor.appendChild(makeTh).appendChild(makeText);
     sixthFloor.appendChild(makeTd);
 });
 
-fifthFloor = document.getElementById('fifthFloor');
+const makeFifthFloor = document.createElement('tr');
+const fifthFloor = floorTable.appendChild(makeFifthFloor);
 const makeTh2 = document.createElement('th');
 const makeText2 = document.createTextNode(floorNames[1]);
 fifthFloor.appendChild(makeTh2).appendChild(makeText2);
@@ -24,7 +26,9 @@ fifthFloor.appendChild(makeTh2).appendChild(makeText2);
     fifthFloor.appendChild(makeTd2);
 });
 
-fourthFloor = document.getElementById('fourthFloor');
+const makeFourthFloor = document.createElement('tr');
+const fourthFloor = floorTable.appendChild(makeFourthFloor);
+
 const makeTh3 = document.createElement('th');
 const makeText3 = document.createTextNode(floorNames[2]);
 fourthFloor.appendChild(makeTh3).appendChild(makeText3);
