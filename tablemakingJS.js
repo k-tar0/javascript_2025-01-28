@@ -35,3 +35,5 @@ fourthFloor.appendChild(makeTh3).appendChild(makeText3);
     makeTd3.appendChild(makeTdText3);
     fourthFloor.appendChild(makeTd3);
 });
+
+

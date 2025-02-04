@@ -1,5 +1,5 @@
 // import { sortedRooms } from "./sortRooms";
-const allRoomsAndTime = [[307,7], [505,6],[623, 6], [618,6], [608,6], [625, 6], [203, 6], [303, 6], [423, 7],[502, 7]];
+const allRoomsAndTime = [[307,7], [505,6],[623, 6], [618,6], [608,6], [625, 6], [203, 6], [303, 6], [423, 6],[502, 7]];
 
 const sortedRoomsbytime = [
     [...allRoomsAndTime].filter(room => room[1] === 6).map(room => room[0]),
