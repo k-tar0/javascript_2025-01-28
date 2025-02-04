@@ -2,17 +2,16 @@ floorTable = document.getElementById('floorTable');
 const makeTh = document.createElement('th');
 const makeTd = document.createElement('td');
 
-treg = document.getElementById('treg');
+sixthFloor = document.getElementById('sixthFloor');
 const makeText = document.createTextNode(floorNames[0]);
-treg.appendChild(makeTh).appendChild(makeText);
+sixthFloor.appendChild(makeTh).appendChild(makeText);
 
 wingNames.reverse().forEach(element => {
     const makeTd = document.createElement('td');
     const makeTdText = document.createTextNode(sortedRooms[0][floorNames[0]][element].join(' '));
     makeTd.appendChild(makeTdText);
-    treg.appendChild(makeTd);
+    sixthFloor.appendChild(makeTd);
 });
-
 
 document.getElementById('put5thFloor').innerHTML = floorNames[1];
 
