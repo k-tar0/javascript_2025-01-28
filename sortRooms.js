@@ -1,4 +1,3 @@
-// import { sortedRooms } from "./sortRooms";
 const allRoomsAndTime = [[307,7], [505,6],[623, 6], [618,6], [608,6], [625, 6], [203, 6], [303, 6], [423, 7],[502, 7]];
 
 const sortedRoomsbytime = [
@@ -24,6 +23,5 @@ for (let h = 0; h < sortedRoomsbytime.length; h++){
     }
     sortedRooms[h] = objSortedRooms;
 }
-
-
-// export { sortedRooms };
+//sort in a wing as well
+//get used to github (later)

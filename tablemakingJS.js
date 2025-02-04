@@ -1,4 +1,4 @@
-floorTable = document.getElementById('floorTable');
+// floorTable = document.getElementById('floorTable');
 
 const makeSixthFloor = document.createElement('tr');
 const sixthFloor = floorTable.appendChild(makeSixthFloor);
@@ -39,4 +39,3 @@ fourthFloor.appendChild(makeTh3).appendChild(makeText3);
     makeTd3.appendChild(makeTdText3);
     fourthFloor.appendChild(makeTd3);
 });
-

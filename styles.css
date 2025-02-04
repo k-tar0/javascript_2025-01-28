@@ -1,0 +1,22 @@
+/* Do it asap */
+
+#floorTable {
+    border : 1px solid #000000;
+    width: calc(100% - 100px); /* 画面の両端から50pxずつの余白を確保 */
+    margin: 0 auto; /* テーブルを中央に配置 */
+    border-collapse: collapse;
+}
+
+#floorTable th {
+    border : 1px solid #000000;
+    padding: 5px;
+}
+
+.light {
+    background-color: #FFE4C4;
+}
+
+td {
+    border : 1px solid #000000;
+    padding: 5px;
+}
