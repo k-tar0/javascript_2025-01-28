@@ -1,4 +1,4 @@
-const allRoomsAndTime = [[307,7], [505,6],[623, 6], [618,6], [608,6], [625, 6], [203, 6], [303, 6], [423, 7],[502, 7]];
+const allRoomsAndTime = [[307,7], [505,6],[623, 6], [618,6], [608,6], [625, 6], [203, 6], [303, 6], [423, 7], [424, 6],[502, 7],[418, 6], [408, 6]];
 
 const sortedRoomsbytime = [
     [...allRoomsAndTime].filter(room => room[1] === 6).map(room => room[0]),
@@ -10,7 +10,6 @@ const wingNames = ['wing 1', 'wing 2', 'wing 3'];
 const sortedRooms = [];
 for (let h = 0; h < sortedRoomsbytime.length; h++){
     const objSortedRooms = {};
-    // sortedRooms[h] = {};
     for (let i = 6; i >= 2; i--) {
         objSortedRooms[floorNames[6-i]] = {};
         const storyFilter = arr => 
