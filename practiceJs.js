@@ -1,7 +1,11 @@
-const numbers = [1, -1, 2, 3];
-const items = numbers
-.filter(n => n >= 0)
-.map(n => ({ value: n }))
-.filter(obj => obj.value > 1);
+const bombedTarget = [ , ,
+    "hospitals",
+    "schools",
+    "mosques",
+    "churches",
+];
 
-console.log(items); // Output: [ { value: 1 }, { value: 2 }, { value: 3 } ]
+const result = bombedTarget.map((target) =>
+     `The ${target} were bombed`);
+
+console.log(bombedTarget[0]);
