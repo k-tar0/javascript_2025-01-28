@@ -1,5 +1,9 @@
-<!-- make this tr simple 
- make the website available for anyone-->
+<!-- 
+ make this tr simple 
+ make the website available for anyone
+ put break
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +15,7 @@
 <body>
     <table id="floorTable">
         <thead>
-            <tr class="light">
+            <tr>
                 <th> </th>
                 <th>wing 3</th>
                 <th>wing 2</th>
@@ -19,8 +23,21 @@
             </tr> 
         </thead>
     </table>
+
+    <div>
+        <label>Room number:</label>
+        <input id="roomNumber" type="number" placeholder="Enter room number">
+        <br><br>
+        <label>Dinner time:</label>
+        <input id="dinnerTime" type="number" placeholder="Enter dinner time">
+        <br><br>
+        <input type="reset">
+        <button type="button" id= "mySubmit">Submit</button>
+    </div>
     <script src="sortRooms.js"></script>
     <script src="tablemakingJS.js"></script>
+
+
 
 </body>
 </html>

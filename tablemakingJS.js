@@ -1,4 +1,4 @@
-floorTable = document.getElementById('floorTable');
+floorTable = document.getElementById('floorTable').appendChild(document.createElement('tBody'));
 
 floorNames.forEach((floorName) => {
     const floor = floorTable.insertRow();
