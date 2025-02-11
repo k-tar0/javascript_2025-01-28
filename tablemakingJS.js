@@ -1,7 +1,8 @@
 export default function tableMake(floorNames, wingNames, allRoomsAndTime) {
+    const dinnerTime = ['18:00', '19:00'];
     const sortedRoomsbytime = [
-        [...allRoomsAndTime].filter(room => room[1] === 6).map(room => room[0]),
-        [...allRoomsAndTime].filter(room => room[1] === 7).map(room => room[0])
+        [...allRoomsAndTime].filter(room => room[1] === dinnerTime[0]).map(room => room[0]),
+        [...allRoomsAndTime].filter(room => room[1] === dinnerTime[1]).map(room => room[0])
     ];
     
     const sortedRooms = sortedRoomsbytime.map(timeGroup => 
