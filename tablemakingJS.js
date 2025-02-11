@@ -1,4 +1,4 @@
-export default function tableMaking(floorNames, wingNames, allRoomsAndTime) {
+export default function tableMake(floorNames, wingNames, allRoomsAndTime) {
     const sortedRoomsbytime = [
         [...allRoomsAndTime].filter(room => room[1] === 6).map(room => room[0]),
         [...allRoomsAndTime].filter(room => room[1] === 7).map(room => room[0])
@@ -10,11 +10,12 @@ export default function tableMaking(floorNames, wingNames, allRoomsAndTime) {
                     floor,
                     Object.fromEntries(
                         wingNames.map((wing, wingIndex) => 
-                            [wing, timeGroup.filter(x => x >= (6 - index) * 100 + 10 * wingIndex && x < (6 - index) * 100 + 10 * (wingIndex + 1))])
+                            [wing, timeGroup.filter(x => x >= (6 - index) * 100 + 10 * wingIndex && x < (6 - index) * 100 + 10 * (wingIndex + 1)).sort((a, b) => b - a)]
+                        )
                     )])
         )
     );
-
+    console.log(sortedRooms)
     
     const floorTable = document.getElementById('floorTable').appendChild(document.createElement('tBody'));
     floorNames.forEach((floorName) => {
