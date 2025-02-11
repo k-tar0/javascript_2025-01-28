@@ -39,3 +39,60 @@ export const makeTableHead = thead => {
         headerRow.appendChild(th);
     });
 };
+
+export const makeForm = (dinnerTime) => {
+    const form = document.createElement("form");
+    form.id = "form";
+    
+    // Create table buttons
+    dinnerTime.forEach(time => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.id = `table${time}`;
+        button.textContent = time;
+        form.appendChild(button);
+    });
+    
+    form.appendChild(document.createElement("br"));
+    form.appendChild(document.createElement("br"));
+    
+    // Room number label & input
+    const roomLabel = document.createElement("label");
+    roomLabel.textContent = "Room number:";
+    form.appendChild(roomLabel);
+    
+    const roomInput = document.createElement("input");
+    roomInput.id = "roomNumber";
+    roomInput.type = "number";
+    roomInput.placeholder = "Enter room number";
+    form.appendChild(roomInput);
+    
+    // Reset button
+    const resetBtn = document.createElement("input");
+    resetBtn.type = "reset";
+    form.appendChild(resetBtn);
+    
+    form.appendChild(document.createElement("br"));
+    form.appendChild(document.createElement("br"));
+    
+    // Dinner time label
+    const dinnerLabel = document.createElement("label");
+    dinnerLabel.textContent = "Dinner time:";
+    form.appendChild(dinnerLabel);
+    
+    // Dinner time buttons
+    dinnerTime.forEach(time => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.id = `book${time}`;
+        button.textContent = time;
+        form.appendChild(button);
+    });
+    
+    form.appendChild(document.createElement("br"));
+    form.appendChild(document.createElement("br"));
+    
+    // Append form to body (or any other container)
+    document.body.appendChild(form);
+    
+}
