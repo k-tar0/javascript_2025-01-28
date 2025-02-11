@@ -7,7 +7,7 @@ const dinnerTime = ['18:00', '19:00'];
 const thead = [' ' , "wing 3", "wing 2", "wing 1"];
 
 makeTableHead(thead);
-makeForm();
+makeForm(dinnerTime);
 tableMake(floorNames, wingNames, allRoomsAndTime, dinnerTime);
 
 document.getElementById("table18:00").addEventListener('click', () => tableMake(floorNames, wingNames, allRoomsAndTime, dinnerTime));
