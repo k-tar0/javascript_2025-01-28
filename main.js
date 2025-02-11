@@ -5,16 +5,8 @@ const floorNames = ['6th floor', '5th floor', '4th floor', '3rd floor', '2nd flo
 const wingNames = ['wing 1', 'wing 2', 'wing 3'];
 const dinnerTime = ['18:00', '19:00'];
 
-//write wing 3 on th
 const thead = [' ' , "wing 3", "wing 2", "wing 1"];
 makeTableHead(thead);
-
-// const th = document.createElement('th');
-// th.textContent = thead[0];
-// document.getElementById('floorTable').appendChild(document.createElement('thead')).insertRow().appendChild(th);
-
-
-
 
 document.getElementById("table18:00").addEventListener('click', () => tableMake(floorNames, wingNames, allRoomsAndTime, dinnerTime));
 

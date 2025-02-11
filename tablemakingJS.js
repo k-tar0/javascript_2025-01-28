@@ -19,8 +19,9 @@ export const tableMake = (floorNames, wingNames, allRoomsAndTime, dinnerTime) =>
     );
     console.log(sortedRooms);
     
+    const tbody = document.getElementById('floorTable').appendChild(document.createElement('tBody'));
     floorNames.forEach(floorName => {
-        const floor = document.getElementById('floorTable').appendChild(document.createElement('tBody')).insertRow();
+        const floor = tbody.insertRow();
         floor.appendChild(document.createElement('th'))
             .appendChild(document.createTextNode(floorName));
 
@@ -31,9 +32,10 @@ export const tableMake = (floorNames, wingNames, allRoomsAndTime, dinnerTime) =>
 };
 
 export const makeTableHead = thead => {
+    const headerRow = document.getElementById('floorTable').createTHead().insertRow();
     thead.forEach(title => {
-        document.getElementById('floorTable').appendChild(document.createElement('thead')).insertRow()
-            .appendChild(document.createElement('th'))
-            .appendChild(document.createTextNode(title));
+        const th = document.createElement('th');
+        th.appendChild(document.createTextNode(title));
+        headerRow.appendChild(th);
     });
 };
