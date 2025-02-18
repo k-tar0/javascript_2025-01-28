@@ -1,14 +1,12 @@
-export const tableMake = (floorNames, wingNames, allRoomsAndTime, dinnerTime) => {
-
+export const updateRooms = (floorNames, wingNames, allRoomsAndTime, dinnerTime) => {
     const arraysToObject = (array, result) => 
-        Object.fromEntries(
-            array.map((element, index) => [element, result(index)]));
+        Object.fromEntries(array.map((element, index) => [element, result(index)]));
 
-    const sortedRooms = 
-    arraysToObject(dinnerTime, timeindex => 
+    const sortRooms = arraysToObject(dinnerTime, timeindex => 
         arraysToObject(floorNames, index => 
             arraysToObject(wingNames, wingIndex => 
-                allRoomsAndTime.filter(([_, t]) => t === dinnerTime[timeindex]).map(([room]) => room)
+                allRoomsAndTime.filter(([_, t]) => t === dinnerTime[timeindex])
+                    .map(([room]) => room)
                     .filter(x => 
                         x >= (6 - index) * 100 + 10 * wingIndex &&
                         x < (6 - index) * 100 + 10 * (wingIndex + 1)
@@ -17,20 +15,21 @@ export const tableMake = (floorNames, wingNames, allRoomsAndTime, dinnerTime) =>
             )
         )
     );
-    console.log(sortedRooms);
-
-    const tbody = document.getElementById('floorTable').appendChild(document.createElement('tBody'));
-    
-    floorNames.forEach(floorName => {
-        const floor = tbody.insertRow();
-        floor.appendChild(document.createElement('th'))
-            .appendChild(document.createTextNode(floorName));
-
-        [...wingNames].reverse().forEach(element => {
-            floor.insertCell().textContent = sortedRooms['18:00'][floorName][element].join(' ');
-        });
-    });
+    return sortRooms;
 };
+
+export const roomsToTable = (floorNames, wingNames, sortRooms, dinnerTime) => {
+    dinnerTime.forEach(time => {
+        const tbody = document.getElementById('floorTable').appendChild(document.createElement('tBody'));
+        floorNames.forEach(floorName => {
+            const floor = tbody.insertRow();
+            floor.appendChild(document.createElement('th')).appendChild(document.createTextNode(floorName));
+            [...wingNames].reverse().forEach(element => {
+                floor.insertCell().textContent = sortRooms[time][floorName][element].join(' ');
+            });
+        });
+    })};
+
 
 export const makeTableHead = thead => {
     const headerRow = document.getElementById('floorTable').createTHead().insertRow();
