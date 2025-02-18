@@ -18,16 +18,17 @@ export const updateRooms = (floorNames, wingNames, allRoomsAndTime, dinnerTime) 
     return sortedRooms;
 };
 
-export const roomsToTable = (floorNames, wingNames, sortedRooms, dinnerTime) => {
-        const tbody = document.getElementById('floorTable').appendChild(document.createElement('tBody'));
-        floorNames.forEach(floorName => {
-            const floor = tbody.insertRow();
-            floor.appendChild(document.createElement('th')).appendChild(document.createTextNode(floorName));
-            [...wingNames].reverse().forEach(element => {
-                floor.insertCell().textContent = sortedRooms[dinnerTime[0]][floorName][element].join(' ');
-            });
+export const roomsToTable = (floorNames, wingNames, sortedRooms, dinnerTime, timeIndex) => {
+    const tbody = document.getElementById('floorTable').appendChild(document.createElement('tBody'));
+    floorNames.forEach(floorName => {
+        const floor = tbody.insertRow();
+        floor.appendChild(document.createElement('th')).appendChild(document.createTextNode(floorName));
+        [...wingNames].reverse().forEach(element => {
+            floor.insertCell().textContent = sortedRooms[dinnerTime[timeIndex]][floorName][element].join(' ');
         });
-    };
+    });
+};
+
 
 
 

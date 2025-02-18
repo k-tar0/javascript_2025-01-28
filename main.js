@@ -9,10 +9,13 @@ const thead = [' ' , "wing 3", "wing 2", "wing 1"];
 makeTableHead(thead);
 makeForm(dinnerTime);
 const sortedRooms = updateRooms(floorNames, wingNames, allRoomsAndTime, dinnerTime);
-roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime);
+roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime, 0);
 
-dinnerTime.forEach(time => {
-    document.getElementById(`table${time}`).addEventListener('click', () => roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime, 0));
+dinnerTime.forEach((time, index) => {
+    document.getElementById(`table${time}`).addEventListener('click', () => {
+        document.querySelectorAll("#floorTable tbody").forEach(tbody => tbody.remove());
+        roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime, index);
+    });
 });
 
 dinnerTime.forEach(time => {
