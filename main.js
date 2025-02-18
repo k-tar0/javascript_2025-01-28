@@ -8,17 +8,17 @@ const thead = [' ' , "wing 3", "wing 2", "wing 1"];
 
 makeTableHead(thead);
 makeForm(dinnerTime);
-const sortRooms = updateRooms(floorNames, wingNames, allRoomsAndTime, dinnerTime);
-roomsToTable(floorNames, wingNames, sortRooms, dinnerTime);
+const sortedRooms = updateRooms(floorNames, wingNames, allRoomsAndTime, dinnerTime);
+roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime);
 
 dinnerTime.forEach(time => {
-    document.getElementById(`table${time}`).addEventListener('click', () => updateRooms(floorNames, wingNames, allRoomsAndTime, dinnerTime));
+    document.getElementById(`table${time}`).addEventListener('click', () => roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime, 0));
 });
 
 dinnerTime.forEach(time => {
     document.getElementById(`book${time}`).addEventListener('click', () => {
         allRoomsAndTime.push([parseInt(document.getElementById("roomNumber").value), time]);
         document.querySelectorAll("#floorTable tbody").forEach(tbody => tbody.remove());
-        updateRooms(floorNames, wingNames, allRoomsAndTime, dinnerTime);
+        roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime);
     });
 });
