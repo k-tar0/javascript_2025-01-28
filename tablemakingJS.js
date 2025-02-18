@@ -1,32 +1,33 @@
 export const tableMake = (floorNames, wingNames, allRoomsAndTime, dinnerTime) => {
-    const sortedRooms = dinnerTime.map(time => 
+
+    const arraysToObject = (array, result) => 
         Object.fromEntries(
-            floorNames.map((floor, index) => [
-                floor,
-                Object.fromEntries(
-                    wingNames.map((wing, wingIndex) => [
-                        wing,
-                        allRoomsAndTime.filter(([_, t]) => t === time).map(([room]) => room)
-                            .filter(x => 
-                                x >= (6 - index) * 100 + 10 * wingIndex &&
-                                x < (6 - index) * 100 + 10 * (wingIndex + 1)
-                            )
-                            .sort((a, b) => b - a)
-                    ])
-                )
-            ])
+            array.map((element, index) => [element, result(index)]));
+
+    const sortedRooms = 
+    arraysToObject(dinnerTime, timeindex => 
+        arraysToObject(floorNames, index => 
+            arraysToObject(wingNames, wingIndex => 
+                allRoomsAndTime.filter(([_, t]) => t === dinnerTime[timeindex]).map(([room]) => room)
+                    .filter(x => 
+                        x >= (6 - index) * 100 + 10 * wingIndex &&
+                        x < (6 - index) * 100 + 10 * (wingIndex + 1)
+                    )
+                    .sort((a, b) => b - a)
+            )
         )
     );
     console.log(sortedRooms);
-    
+
     const tbody = document.getElementById('floorTable').appendChild(document.createElement('tBody'));
+    
     floorNames.forEach(floorName => {
         const floor = tbody.insertRow();
         floor.appendChild(document.createElement('th'))
             .appendChild(document.createTextNode(floorName));
 
         [...wingNames].reverse().forEach(element => {
-            floor.insertCell().textContent = sortedRooms[0][floorName][element].join(' ');
+            floor.insertCell().textContent = sortedRooms['18:00'][floorName][element].join(' ');
         });
     });
 };
@@ -43,54 +44,33 @@ export const makeTableHead = thead => {
 export const makeForm = (dinnerTime) => {
     const form = document.createElement("form");
     form.id = "form";
-    
-    // Create table buttons
-    dinnerTime.forEach(time => {
+
+    const createButton = (id, text) => {
         const button = document.createElement("button");
         button.type = "button";
-        button.id = `table${time}`;
-        button.textContent = time;
-        form.appendChild(button);
-    });
-    
+        button.id = id;
+        button.textContent = text;
+        return button;
+    };
+
+    dinnerTime.forEach(time => form.appendChild(createButton(`table${time}`, time)));
+
     form.appendChild(document.createElement("br"));
     form.appendChild(document.createElement("br"));
-    
-    // Room number label & input
-    const roomLabel = document.createElement("label");
-    roomLabel.textContent = "Room number:";
-    form.appendChild(roomLabel);
-    
-    const roomInput = document.createElement("input");
-    roomInput.id = "roomNumber";
-    roomInput.type = "number";
-    roomInput.placeholder = "Enter room number";
-    form.appendChild(roomInput);
-    
-    const resetButton = document.createElement("input");
-    resetButton.type = "reset";
-    form.appendChild(resetButton);
-    
+
+    form.appendChild(Object.assign(document.createElement("label"), { textContent: "Room number:" }));
+    form.appendChild(Object.assign(document.createElement("input"), { id: "roomNumber", type: "number", placeholder: "Enter room number" }));
+    form.appendChild(Object.assign(document.createElement("input"), { type: "reset" }));
+
     form.appendChild(document.createElement("br"));
     form.appendChild(document.createElement("br"));
-    
-    // Dinner time label
-    const dinnerLabel = document.createElement("label");
-    dinnerLabel.textContent = "Dinner time:";
-    form.appendChild(dinnerLabel);
-    
-    // Dinner time buttons
-    dinnerTime.forEach(time => {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.id = `book${time}`;
-        button.textContent = time;
-        form.appendChild(button);
-    });
-    
+
+    form.appendChild(Object.assign(document.createElement("label"), { textContent: "Dinner time:" }));
+
+    dinnerTime.forEach(time => form.appendChild(createButton(`book${time}`, time)));
+
     form.appendChild(document.createElement("br"));
     form.appendChild(document.createElement("br"));
-    
+
     document.body.appendChild(form);
-    
-}
+};

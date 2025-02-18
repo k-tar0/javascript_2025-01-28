@@ -10,16 +10,14 @@ makeTableHead(thead);
 makeForm(dinnerTime);
 tableMake(floorNames, wingNames, allRoomsAndTime, dinnerTime);
 
-document.getElementById("table18:00").addEventListener('click', () => tableMake(floorNames, wingNames, allRoomsAndTime, dinnerTime));
-
-document.getElementById("book18:00").addEventListener('click', () => {
-    allRoomsAndTime.push([parseInt(document.getElementById("roomNumber").value), "18:00"]);
-    document.querySelectorAll("#floorTable tbody").forEach(tbody => tbody.remove());
-    tableMake(floorNames, wingNames, allRoomsAndTime, dinnerTime);
+dinnerTime.forEach(time => {
+    document.getElementById(`table${time}`).addEventListener('click', () => tableMake(floorNames, wingNames, allRoomsAndTime, dinnerTime));
 });
 
-document.getElementById("book19:00").addEventListener('click', () => {
-    allRoomsAndTime.push([parseInt(document.getElementById("roomNumber").value), "19:00"]);
-    document.querySelector("#floorTable tbody")?.remove();
-    tableMake(floorNames, wingNames, allRoomsAndTime, dinnerTime);
+dinnerTime.forEach(time => {
+    document.getElementById(`book${time}`).addEventListener('click', () => {
+        allRoomsAndTime.push([parseInt(document.getElementById("roomNumber").value), time]);
+        document.querySelectorAll("#floorTable tbody").forEach(tbody => tbody.remove());
+        tableMake(floorNames, wingNames, allRoomsAndTime, dinnerTime);
+    });
 });
