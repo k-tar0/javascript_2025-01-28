@@ -67,10 +67,9 @@ export const makeForm = (dinnerTime) => {
     roomInput.placeholder = "Enter room number";
     form.appendChild(roomInput);
     
-    // Reset button
-    const resetBtn = document.createElement("input");
-    resetBtn.type = "reset";
-    form.appendChild(resetBtn);
+    const resetButton = document.createElement("input");
+    resetButton.type = "reset";
+    form.appendChild(resetButton);
     
     form.appendChild(document.createElement("br"));
     form.appendChild(document.createElement("br"));
@@ -92,7 +91,6 @@ export const makeForm = (dinnerTime) => {
     form.appendChild(document.createElement("br"));
     form.appendChild(document.createElement("br"));
     
-    // Append form to body (or any other container)
     document.body.appendChild(form);
     
 }
