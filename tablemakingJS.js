@@ -1,4 +1,4 @@
-export const updateRooms = (floorNames, wingNames, allRoomsAndTime, dinnerTime) => {
+export const sortRooms = (floorNames, wingNames, allRoomsAndTime, dinnerTime) => {
     const arraysToObject = (array, result) => 
         Object.fromEntries(array.map((element, index) => [element, result(index)]));
 
