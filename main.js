@@ -10,11 +10,14 @@ makeTableHead(thead);
 makeForm(dinnerTime);
 let sortedRooms = sortRooms(floorNames, wingNames, allRoomsAndTime, dinnerTime);
 roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime, 0);
+document.getElementById(`table${dinnerTime[0]}`).style.backgroundColor = "tomato";
 
 dinnerTime.forEach((time, index) => {
     document.getElementById(`table${time}`).addEventListener('click', () => {
         document.querySelectorAll("#floorTable tbody").forEach(tbody => tbody.remove());
         roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime, index);
+        dinnerTime.forEach(time => document.getElementById(`table${time}`).style.backgroundColor = "");
+        document.getElementById(`table${time}`).style.backgroundColor = "tomato";
     });
 });
 
