@@ -29,10 +29,6 @@ export const roomsToTable = (floorNames, wingNames, sortedRooms, dinnerTime, tim
     });
 };
 
-
-
-
-
 export const makeTableHead = thead => {
     const headerRow = document.getElementById('floorTable').createTHead().insertRow();
     thead.forEach(title => {
@@ -59,14 +55,14 @@ export const makeForm = (dinnerTime) => {
     form.appendChild(document.createElement("br"));
     form.appendChild(document.createElement("br"));
 
-    form.appendChild(Object.assign(document.createElement("label"), { textContent: "Room number:" }));
-    form.appendChild(Object.assign(document.createElement("input"), { id: "roomNumber", type: "number", placeholder: "Enter room number" }));
+    form.appendChild(Object.assign(document.createElement("label"), { textContent: "部屋番号を入力:" }));
+    form.appendChild(Object.assign(document.createElement("input"), { id: "roomNumber", type: "number", placeholder: "例: 302", style: "width: 100px;" }));
     form.appendChild(Object.assign(document.createElement("input"), { type: "reset" }));
 
     form.appendChild(document.createElement("br"));
     form.appendChild(document.createElement("br"));
 
-    form.appendChild(Object.assign(document.createElement("label"), { textContent: "Dinner time:" }));
+    form.appendChild(Object.assign(document.createElement("label"), { textContent: "夕食の時間を入力:" }));
 
     dinnerTime.forEach(time => form.appendChild(createButton(`book${time}`, time)));
 

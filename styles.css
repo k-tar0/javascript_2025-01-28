@@ -30,6 +30,7 @@ tbody th{
     padding: 5px;
     text-align: center;
     background-color: #d3d3d3;
+    width: 30px;
 }
 
 td {
@@ -39,4 +40,8 @@ td {
 }
 form{
     margin-top: 30px;
+    button {
+        font-size: 20px;
+        padding: 3px 20px;
+    }
 }
