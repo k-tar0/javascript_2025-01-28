@@ -12,6 +12,8 @@ let sortedRooms = sortRooms(floorNames, wingNames, allRoomsAndTime, dinnerTime);
 roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime, 0);
 document.getElementById(`table${dinnerTime[0]}`).style.backgroundColor = "tomato";
 
+
+
 dinnerTime.forEach((time, index) => {
     document.getElementById(`table${time}`).addEventListener('click', () => {
         document.querySelectorAll("#floorTable tbody").forEach(tbody => tbody.remove());
@@ -31,4 +33,12 @@ dinnerTime.forEach((time, index) => {
         document.getElementById(`table${time}`).style.backgroundColor = "tomato";
         document.getElementById("roomNumber").value = "";
     });
+});
+
+document.querySelectorAll("td").forEach(cell => {
+    const rect = cell.getBoundingClientRect();
+    const centerX = (rect.left + rect.right) / 2 + window.scrollX;
+    const centerY = (rect.top + rect.bottom) / 2 + window.scrollY;
+
+    console.log(`Center of ${cell.id}: X=${centerX}, Y=${centerY}`);
 });

@@ -42,3 +42,10 @@ form{
         padding: 3px 20px;
     }
 }
+
+.line {
+    position: absolute;
+    width: 2px;
+    background-color: red;
+    z-index: 1;
+}
