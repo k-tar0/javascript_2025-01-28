@@ -24,7 +24,16 @@ export const roomsToTable = (floorNames, wingNames, sortedRooms, dinnerTime, tim
         const floor = tbody.insertRow();
         floor.appendChild(document.createElement('th')).appendChild(document.createTextNode(floorName));
         [...wingNames].reverse().forEach(element => {
-            floor.insertCell().textContent = sortedRooms[dinnerTime[timeIndex]][floorName][element].join(' ');
+            const cell = floor.insertCell();
+            cell.textContent = sortedRooms[dinnerTime[timeIndex]][floorName][element].join(' ');
+            cell.className = 'room-cell';
+            cell.addEventListener('click', () => {
+                const rect = cell.getBoundingClientRect();
+                const canvasRect = canvas.getBoundingClientRect();
+                const x = rect.left + rect.width / 2 - canvasRect.left;
+                const y = rect.top + rect.height / 2 - canvasRect.top;
+                console.log(`Cell center: (${x}, ${y})`);
+            });
         });
     });
 };

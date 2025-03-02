@@ -11,6 +11,7 @@ body {
     background-color: #FFFFFF;
     margin-top: 20px;
     box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.45);
+    position: relative;
 }
 
 th {
@@ -43,9 +44,16 @@ form{
     }
 }
 
-.line {
+#canvas {
     position: absolute;
-    width: 2px;
-    background-color: red;
     z-index: 1;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.room-cell {
+    position: relative;
+    z-index: 2;
+
 }

@@ -1,4 +1,5 @@
 import { makeTableHead, sortRooms, roomsToTable, makeForm } from "./tablemakingJS.js";
+import { drawLines } from "./routeMaking.js";
 
 const allRoomsAndTime = [[307,"19:00"], [505,"18:00"],[623, "18:00"], [618,"18:00"], [608,"18:00"], [625, "18:00"], [203, "18:00"], [303, "18:00"], [423, "19:00"], [424, "18:00"],[502, "19:00"],[418, "18:00"], [408, "18:00"],[621,"18:00"]];
 const floorNames = ['6F', '5F', '4F', '3F', '2F'];
@@ -35,10 +36,4 @@ dinnerTime.forEach((time, index) => {
     });
 });
 
-document.querySelectorAll("td").forEach(cell => {
-    const rect = cell.getBoundingClientRect();
-    const centerX = (rect.left + rect.right) / 2 + window.scrollX;
-    const centerY = (rect.top + rect.bottom) / 2 + window.scrollY;
-
-    console.log(`Center of ${cell.id}: X=${centerX}, Y=${centerY}`);
-});
+drawLines();
