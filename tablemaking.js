@@ -15,6 +15,7 @@ export const sortRooms = (floorNames, wingNames, allRoomsAndTime, dinnerTime) =>
             )
         )
     );
+    
     return sortedRooms;
 };
 

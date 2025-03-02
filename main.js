@@ -1,4 +1,4 @@
-import { makeTableHead, sortRooms, roomsToTable } from "./tablemakingJS.js";
+import { makeTableHead, sortRooms, roomsToTable } from "./tablemaking.js";
 import { drawLines } from "./routeMaking.js";
 import { makeForm } from "./formMaking.js";
 
@@ -14,8 +14,6 @@ makeForm(dinnerTime);
 let sortedRooms = sortRooms(floorNames, wingNames, allRoomsAndTime, dinnerTime);
 roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime, 0);
 document.getElementById(`table${dinnerTime[0]}`).style.backgroundColor = "tomato";
-
-
 
 dinnerTime.forEach((time, index) => {
     document.getElementById(`table${time}`).addEventListener('click', () => {
@@ -37,7 +35,9 @@ dinnerTime.forEach((time, index) => {
         document.getElementById("roomNumber").value = "";
     });
 });
+console.log(sortedRooms);
 
 document.getElementById("calculate").addEventListener('click', () => {
+    // getPositions();
     drawLines();
 });
