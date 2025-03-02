@@ -1,8 +1,6 @@
 export const drawLines = () => {
     const cellPositions = {};
 
-
-
     const canvas = document.getElementById("canvas");
     const context = canvas.getContext("2d");
 
@@ -30,11 +28,9 @@ export const drawLines = () => {
         }
 
         cellPositions[floor][wing] = 
-        { X: (rect.left + rect.right) / 2 + window.scrollX - canvasRect.left,
-        Y: (rect.top + rect.bottom) / 2 + window.scrollY - canvasRect.top };
+        { X: (rect.left + rect.right) / 2- canvasRect.left,
+        Y: (rect.top + rect.bottom) / 2 - canvasRect.top };
     });
-
-    console.log(cellPositions);
 
     context.beginPath();
     context.moveTo(cellPositions[0][0].X, cellPositions[0][0].Y);
