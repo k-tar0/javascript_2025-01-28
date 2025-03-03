@@ -20,7 +20,6 @@ const allRoomsAndTime = [
 const floorNames = ['6F', '5F', '4F', '3F', '2F'];
 const wingNames = ['wing 1', 'wing 2', 'wing 3'];
 const dinnerTime = ['18:00','18:30','19:00','19:30'];
-const thead = [' ' , "3号館", "2号館", "1号館"];
 
 addTitle();
 makeForm(dinnerTime);

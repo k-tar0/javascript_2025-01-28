@@ -1,12 +1,13 @@
 export const addTitle = () => {
     const h5 = document.createElement('h5');
-    h5.textContent = "布団敷きの部屋一覧";
+    h5.textContent = "布団敷きの部屋";
     document.getElementById('floorTable').parentNode.insertBefore(h5, document.getElementById('floorTable'));
 };
 
 export const sortRooms = (floorNames, wingNames, allRoomsAndTime, dinnerTime) => {
     const arraysToObject = (array, result) => 
-        Object.fromEntries(array.map((element, index) => [element, result(index)]));
+        Object.fromEntries(array.map((element, index) =>
+             [element, result(index)]));
 
     const sortedRooms = arraysToObject(dinnerTime, timeindex => 
         arraysToObject(floorNames, index => 
@@ -29,10 +30,9 @@ export const roomsToTable = (floorNames, wingNames, sortedRooms, dinnerTime, tim
     const tbody = document.getElementById('floorTable').appendChild(document.createElement('tBody'));
     floorNames.forEach(floorName => {
         const floor = tbody.insertRow();
-        // floor.appendChild(document.createElement('th')).appendChild(document.createTextNode(floorName));
-        [...wingNames].reverse().forEach(element => {
+        const roomsToCell = () => {
             const cell = floor.insertCell();
-            cell.textContent = sortedRooms[dinnerTime[timeIndex]][floorName][element].join(' ');
+            const floorRooms = sortedRooms[dinnerTime[timeIndex]][floorName];
             cell.className = 'room-cell';
             cell.addEventListener('click', () => {
                 const rect = cell.getBoundingClientRect();
@@ -41,7 +41,18 @@ export const roomsToTable = (floorNames, wingNames, sortedRooms, dinnerTime, tim
                 const y = rect.top + rect.height / 2 - canvasRect.top;
                 console.log(`Cell center: (${x}, ${y})`);
             });
-        });
+            return {cell, floorRooms};
+        };
+        if (floorName === '2F') {
+            const { cell, floorRooms } = roomsToCell();
+            cell.colSpan = 2 ;
+            cell.textContent = Object.values(floorRooms).flat().join(" ");//なぜsecondFloorRooms じゃだめ?
+        } else {
+            [...wingNames].reverse().forEach(element => {
+                const { cell, floorRooms } = roomsToCell();
+                cell.textContent = floorRooms[element].join(' ');
+            });
+        }
+
     });
 };
-
