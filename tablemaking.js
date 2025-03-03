@@ -1,3 +1,9 @@
+export const addTitle = () => {
+    const h5 = document.createElement('h5');
+    h5.textContent = "布団敷きの部屋一覧";
+    document.getElementById('floorTable').parentNode.insertBefore(h5, document.getElementById('floorTable'));
+};
+
 export const sortRooms = (floorNames, wingNames, allRoomsAndTime, dinnerTime) => {
     const arraysToObject = (array, result) => 
         Object.fromEntries(array.map((element, index) => [element, result(index)]));
@@ -23,7 +29,7 @@ export const roomsToTable = (floorNames, wingNames, sortedRooms, dinnerTime, tim
     const tbody = document.getElementById('floorTable').appendChild(document.createElement('tBody'));
     floorNames.forEach(floorName => {
         const floor = tbody.insertRow();
-        floor.appendChild(document.createElement('th')).appendChild(document.createTextNode(floorName));
+        // floor.appendChild(document.createElement('th')).appendChild(document.createTextNode(floorName));
         [...wingNames].reverse().forEach(element => {
             const cell = floor.insertCell();
             cell.textContent = sortedRooms[dinnerTime[timeIndex]][floorName][element].join(' ');
@@ -39,11 +45,3 @@ export const roomsToTable = (floorNames, wingNames, sortedRooms, dinnerTime, tim
     });
 };
 
-export const makeTableHead = thead => {
-    const headerRow = document.getElementById('floorTable').createTHead().insertRow();
-    thead.forEach(title => {
-        const th = document.createElement('th');
-        th.appendChild(document.createTextNode(title));
-        headerRow.appendChild(th);
-    });
-};

@@ -15,7 +15,6 @@ export const drawLines = () => {
     resizeCanvas();
 
     context.lineWidth = 2 / devicePixelRatio;
-
     document.querySelectorAll("td").forEach((cell, index) => {
         const rect = cell.getBoundingClientRect();
         const canvasRect = canvas.getBoundingClientRect();

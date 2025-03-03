@@ -1,4 +1,4 @@
-import { makeTableHead, sortRooms, roomsToTable } from "./tablemaking.js";
+import { addTitle, sortRooms, roomsToTable } from "./tablemaking.js";
 import { drawLines } from "./routeMaking.js";
 import { makeForm } from "./formMaking.js";
 
@@ -16,12 +16,13 @@ const allRoomsAndTime = [
     [509, "19:30"], [310, "19:30"], [411, "19:30"], [612, "19:30"],
     [513, "19:30"], [524, "19:30"], [515, "19:30"], [516, "18:00"]
 ];
+
 const floorNames = ['6F', '5F', '4F', '3F', '2F'];
 const wingNames = ['wing 1', 'wing 2', 'wing 3'];
 const dinnerTime = ['18:00','18:30','19:00','19:30'];
 const thead = [' ' , "3号館", "2号館", "1号館"];
 
-makeTableHead(thead);
+addTitle();
 makeForm(dinnerTime);
 
 let sortedRooms = sortRooms(floorNames, wingNames, allRoomsAndTime, dinnerTime);
