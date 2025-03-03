@@ -24,9 +24,11 @@ const dinnerTime = ['18:00','18:30','19:00','19:30'];
 addTitle();
 makeForm(dinnerTime);
 
+let shownTime = '18:00';
 let sortedRooms = sortRooms(floorNames, wingNames, allRoomsAndTime, dinnerTime);
-roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime, 0);
-document.getElementById(`table${dinnerTime[0]}`).style.backgroundColor = "tomato";
+roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime, dinnerTime.indexOf(shownTime));
+document.getElementById(`table${shownTime}`).style.backgroundColor = "tomato";
+console.log(shownTime);
 
 dinnerTime.forEach((time, index) => {
     document.getElementById(`table${time}`).addEventListener('click', () => {
@@ -34,7 +36,19 @@ dinnerTime.forEach((time, index) => {
         roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime, index);
         dinnerTime.forEach(time => document.getElementById(`table${time}`).style.backgroundColor = "");
         document.getElementById(`table${time}`).style.backgroundColor = "tomato";
+        shownTime = time;
+        console.log(shownTime);
     });
+});
+
+document.getElementById("numInput").addEventListener("input", function() {
+    let value = this.value;
+    if (value.length === 3) {
+        console.log(value);
+        allRoomsAndTime.push([value, shownTime]);
+        sortedRooms = sortRooms(floorNames, wingNames, allRoomsAndTime, dinnerTime);
+        roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime, indexOf(shownTime));
+    }
 });
 
 dinnerTime.forEach((time, index) => {
@@ -51,6 +65,5 @@ dinnerTime.forEach((time, index) => {
 console.log(sortedRooms);
 
 document.getElementById("calculate").addEventListener('click', () => {
-    // getPositions();
     drawLines();
 });

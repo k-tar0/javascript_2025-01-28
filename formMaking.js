@@ -11,8 +11,7 @@ export const makeForm = (dinnerTime) => {
     form.append(document.createElement("br"), document.createElement("br"));
 
     form.appendChild(Object.assign(document.createElement("label"), { textContent: "部屋番号を入力:" }));
-    form.appendChild(Object.assign(document.createElement("input"), { id: "roomNumber", type: "number", placeholder: "例: 302", style: "width: 100px;" }));
-    form.appendChild(Object.assign(document.createElement("input"), { type: "reset" }));
+    form.appendChild(Object.assign(document.createElement("input"), { type: "text", id: "numInput", maxLength: 3, placeholder: "Enter 3 digits" }));
 
     form.append(document.createElement("br"), document.createElement("br"));
 
