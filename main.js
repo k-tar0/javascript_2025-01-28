@@ -19,38 +19,40 @@ const allRoomsAndTime = [
 
 const floorNames = ['6F', '5F', '4F', '3F', '2F'];
 const wingNames = ['wing 1', 'wing 2', 'wing 3'];
-const dinnerTime = ['18:00','18:30','19:00','19:30'];
+const dinnerTimes = ['18:00','18:30','19:00','19:30'];
 
 addTitle();
-makeForm(dinnerTime);
+makeForm(dinnerTimes);
 
-let sortedRooms = sortRooms(floorNames, wingNames, allRoomsAndTime, dinnerTime);
-roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime, 0);
-document.getElementById(`table${dinnerTime[0]}`).style.backgroundColor = "tomato";
+let shownTime = '18:00';
+let sortedRooms = sortRooms(floorNames, wingNames, allRoomsAndTime, dinnerTimes);
+roomsToTable(floorNames, wingNames, sortedRooms, shownTime);
+document.getElementById(`table${shownTime}`).style.backgroundColor = "tomato";
+console.log(shownTime);
 
-dinnerTime.forEach((time, index) => {
-    document.getElementById(`table${time}`).addEventListener('click', () => {
+dinnerTimes.forEach((dinnerTime) => {
+    document.getElementById(`table${dinnerTime}`).addEventListener('click', () => {
         document.querySelectorAll("#floorTable tbody").forEach(tbody => tbody.remove());
-        roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime, index);
-        dinnerTime.forEach(time => document.getElementById(`table${time}`).style.backgroundColor = "");
-        document.getElementById(`table${time}`).style.backgroundColor = "tomato";
+        roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime);
+        dinnerTimes.forEach(time => document.getElementById(`table${time}`).style.backgroundColor = "");
+        document.getElementById(`table${dinnerTime}`).style.backgroundColor = "tomato";
+        shownTime = dinnerTime;
+        console.log(shownTime);
     });
 });
 
-dinnerTime.forEach((time, index) => {
-    document.getElementById(`book${time}`).addEventListener('click', () => {
+document.getElementById("numInput").addEventListener("input", function() {
+    let value = this.value;
+    if (value.length === 3) {
+        console.log(value);
         document.querySelectorAll("#floorTable tbody").forEach(tbody => tbody.remove());
-        allRoomsAndTime.push([parseInt(document.getElementById("roomNumber").value), time]);
-        sortedRooms = sortRooms(floorNames, wingNames, allRoomsAndTime, dinnerTime);
-        roomsToTable(floorNames, wingNames, sortedRooms, dinnerTime, index);
-        dinnerTime.forEach(time => document.getElementById(`table${time}`).style.backgroundColor = "");
-        document.getElementById(`table${time}`).style.backgroundColor = "tomato";
-        document.getElementById("roomNumber").value = "";
-    });
+        allRoomsAndTime.push([value, shownTime]);
+        sortedRooms = sortRooms(floorNames, wingNames, allRoomsAndTime, dinnerTimes);
+        roomsToTable(floorNames, wingNames, sortedRooms, shownTime);
+        this.value = "";
+    }
 });
-console.log(sortedRooms);
 
 document.getElementById("calculate").addEventListener('click', () => {
-    // getPositions();
     drawLines();
 });
