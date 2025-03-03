@@ -17,27 +17,11 @@ h5 {
     margin: 1px 0;
 }
 
-th {
-    border : 1px solid #000000;
-    padding: 5px;
-} 
-
-thead{
-    background-color: #FFE4C4;
-}
-
-tbody th{
-    border : 1px solid #000000;
-    padding: 5px;
-    text-align: center;
-    background-color: #d3d3d3;
-    width: 30px;
-}
-
 td {
     border : 1px solid #000000;
     padding: 5px;
     text-align: center;
+    height: 30px;
 }
 form{
     margin-top: 30px;
