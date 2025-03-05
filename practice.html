@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Trigger Input</title>
-</head>
+<html>
 <body>
+    <h1>Shared Data:</h1>
+    <ul id="data-list"></ul>
 
-    <input type="text" id="numInput" maxlength="3" placeholder="Enter 3 digits">
+    <input type="text" id="newData" placeholder="Enter data">
+    <button onclick="addData()">Add</button>
 
     <script>
-        document.getElementById("numInput").addEventListener("input", function () {
-            let value = this.value;
-            if (value.length === 3) {
-                myFunction(value);
-            }
-        });
+        fetch('http://localhost:3000/data')
+            .then(res => res.json())
+            .then(data => data.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                document.getElementById('data-list').appendChild(li);
+            }));
 
-        function myFunction(val) {
-            alert("You entered: " + val);
-            // You can replace alert with any other function logic
+        function addData() {
+            const newData = document.getElementById('newData').value;
+            fetch('http://localhost:3000/data', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data: newData })
+            }).then(() => location.reload());
         }
     </script>
-
 </body>
 </html>
