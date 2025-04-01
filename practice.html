@@ -2,28 +2,9 @@
 <html>
 <body>
     <h1>Shared Data:</h1>
-    <ul id="data-list"></ul>
-
-    <input type="text" id="newData" placeholder="Enter data">
-    <button onclick="addData()">Add</button>
 
     <script>
-        fetch('http://localhost:3000/data')
-            .then(res => res.json())
-            .then(data => data.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                document.getElementById('data-list').appendChild(li);
-            }));
-
-        function addData() {
-            const newData = document.getElementById('newData').value;
-            fetch('http://localhost:3000/data', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ data: newData })
-            }).then(() => location.reload());
-        }
+        console.log('Hello from the front-end!');
     </script>
 </body>
 </html>

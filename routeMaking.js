@@ -27,7 +27,7 @@ export const drawLines = () => {
         }
 
         cellPositions[floor][wing] = 
-        { X: (rect.left + rect.right) / 2- canvasRect.left,
+        { X: (rect.left + rect.right) / 2 - canvasRect.left,
         Y: (rect.top + rect.bottom) / 2 - canvasRect.top };
     });
 
@@ -38,4 +38,8 @@ export const drawLines = () => {
     context.lineWidth = 3; 
     context.stroke();
     context.closePath();
+}
+
+function classifyLiftStop(sortedRooms) {
+    sortedRooms
 }
