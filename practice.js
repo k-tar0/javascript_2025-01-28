@@ -1,11 +1,7 @@
-const bombedTarget = [ , ,
-    "hospitals",
-    "schools",
-    "mosques",
-    "churches",
-];
-
-const result = bombedTarget.map((target) =>
-     `The ${target} were bombed`);
-
-console.log(bombedTarget[0]);
+    const express = require('express');
+    const path = require('path');
+    const app = express();
+    
+    app.get('/', (req, res) => 
+        res.sendFile(path.join(__dirname, 'practice.html')        ));
+    app.listen(3000, () => console.log('Server running on port 3000'));

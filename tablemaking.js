@@ -4,15 +4,15 @@ export const addTitle = () => {
     document.getElementById('floorTable').parentNode.insertBefore(h5, document.getElementById('floorTable'));
 };
 
-export const sortRooms = (floorNames, wingNames, allRoomsAndTime, dinnerTime) => {
+export const sortRooms = (floorNames, wingNames, allRoomsAndTime, dinnerTimes) => {
     const arraysToObject = (array, result) => 
         Object.fromEntries(array.map((element, index) =>
              [element, result(index)]));
 
-    const sortedRooms = arraysToObject(dinnerTime, timeindex => 
+    const sortedRooms = arraysToObject(dinnerTimes, timeindex => 
         arraysToObject(floorNames, index => 
             arraysToObject(wingNames, wingIndex => 
-                allRoomsAndTime.filter(([_, t]) => t === dinnerTime[timeindex])
+                allRoomsAndTime.filter(([_, t]) => t === dinnerTimes[timeindex])
                     .map(([room]) => room)
                     .filter(x => 
                         x >= (6 - index) * 100 + 10 * wingIndex &&
@@ -26,13 +26,13 @@ export const sortRooms = (floorNames, wingNames, allRoomsAndTime, dinnerTime) =>
     return sortedRooms;
 };
 
-export const roomsToTable = (floorNames, wingNames, sortedRooms, dinnerTime, timeIndex) => {
+export const roomsToTable = (floorNames, wingNames, sortedRooms, dinnerTime) => {
     const tbody = document.getElementById('floorTable').appendChild(document.createElement('tBody'));
     floorNames.forEach(floorName => {
         const floor = tbody.insertRow();
         const roomsToCell = () => {
             const cell = floor.insertCell();
-            const floorRooms = sortedRooms[dinnerTime[timeIndex]][floorName];
+            const floorRooms = sortedRooms[dinnerTime][floorName];
             cell.className = 'room-cell';
             cell.addEventListener('click', () => {
                 const rect = cell.getBoundingClientRect();

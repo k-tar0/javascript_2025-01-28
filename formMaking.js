@@ -6,20 +6,18 @@ export const makeForm = (dinnerTime) => {
         Object.assign(document.createElement("button"), 
     { type: "button", id, textContent: text });
 
-    dinnerTime.forEach(time => form.appendChild(createButton(`table${time}`, time)));
+    const div = Object.assign(document.createElement("div"), { className: "buttonGroup" });
+    dinnerTime.forEach(time => div.appendChild(createButton(`table${time}`, time)));
+    form.appendChild(div);
 
     form.append(document.createElement("br"), document.createElement("br"));
 
     form.appendChild(Object.assign(document.createElement("label"), { textContent: "部屋番号を入力:" }));
-    form.appendChild(Object.assign(document.createElement("input"), { id: "roomNumber", type: "number", placeholder: "例: 302", style: "width: 100px;" }));
-    form.appendChild(Object.assign(document.createElement("input"), { type: "reset" }));
+    form.appendChild(Object.assign(document.createElement("input"), { type: "text", id: "numInput", maxLength: 3, placeholder: "Enter 3 digits" }));
 
-    form.append(document.createElement("br"), document.createElement("br"));
-
-    form.appendChild(Object.assign(document.createElement("label"), { textContent: "夕食の時間を入力:" }));
-
-    dinnerTime.forEach(time => form.appendChild(createButton(`book${time}`, time)));
+    form.append(document.createElement("br"))
     
+
     form.append(document.createElement("br"), document.createElement("br"));
 
     form.appendChild(createButton("calculate", "ルートの計算"));
