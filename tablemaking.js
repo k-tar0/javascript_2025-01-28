@@ -1,7 +1,8 @@
 export const addTitle = () => {
-    const h5 = document.createElement('h5');
-    h5.textContent = "布団敷きの部屋";
-    document.getElementById('floorTable').parentNode.insertBefore(h5, document.getElementById('floorTable'));
+    const table = document.getElementById('floorTable');
+    const title = document.createElement('h5');
+    title.textContent = "布団敷きの部屋";
+    table.insertAdjacentElement('beforebegin', title);
 };
 
 export const sortRooms = (floorNames, wingNames, allRoomsAndTime, dinnerTimes) => {
@@ -9,16 +10,18 @@ export const sortRooms = (floorNames, wingNames, allRoomsAndTime, dinnerTimes) =
         Object.fromEntries(array.map((element, index) =>
              [element, result(index)]));
 
-    const sortedRooms = arraysToObject(dinnerTimes, timeindex => 
-        arraysToObject(floorNames, index => 
-            arraysToObject(wingNames, wingIndex => 
-                allRoomsAndTime.filter(([_, t]) => t === dinnerTimes[timeindex])
-                    .map(([room]) => room)
-                    .filter(x => 
-                        x >= (6 - index) * 100 + 10 * wingIndex &&
-                        x < (6 - index) * 100 + 10 * (wingIndex + 1)
-                    )
-                    .sort((a, b) => b - a)
+    const sortedRooms = arraysToObject(
+        dinnerTimes, timeindex => arraysToObject(
+            floorNames, floorIndex => arraysToObject(
+                wingNames, wingIndex => 
+                    allRoomsAndTime
+                        .filter(([_, t]) => t === dinnerTimes[timeindex])
+                        .map(([room]) => room)
+                        .filter(x => 
+                            x >= (6 - floorIndex) * 100 + 10 * wingIndex &&
+                            x < (6 - floorIndex) * 100 + 10 * (wingIndex + 1)
+                        )
+                        .sort((a, b) => b - a)
             )
         )
     );

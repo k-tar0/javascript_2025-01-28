@@ -12,7 +12,8 @@ const allRoomsAndTime = [
     [413, "18:30"], [514, "18:30"], [415, "18:30"], [416, "18:30"],
     [505, "19:30"], [506, "19:30"], [507, "19:30"], [508, "19:30"],
     [509, "19:30"], [310, "19:30"], [411, "19:30"], [612, "19:30"],
-    [513, "19:30"], [524, "19:30"], [515, "19:30"], [516, "18:00"]
+    [513, "19:30"], [524, "19:30"], [515, "19:30"], [516, "18:00"],
+    [607, "19:00"]
 ];
 
 const floorNames = ['6F', '5F', '4F', '3F', '2F'];
@@ -22,7 +23,7 @@ const dinnerTimes = ['18:00','18:30','19:00','19:30'];
 addTitle();
 makeForm(dinnerTimes);
 
-let shownTime = '18:00';
+let shownTime = '18:30';
 let sortedRooms = sortRooms(floorNames, wingNames, allRoomsAndTime, dinnerTimes);
 roomsToTable(floorNames, wingNames, sortedRooms, shownTime);
 document.getElementById(`table${shownTime}`).style.backgroundColor = "tomato";
