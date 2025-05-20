@@ -1,6 +1,5 @@
 export const makeForm = (dinnerTime) => {
-    const form = document.createElement("form");
-    form.id = "form";
+    const form = Object.assign(document.createElement("form"), { id: "form" });
 
     const createButton = (id, text) => 
         Object.assign(document.createElement("button"), 
