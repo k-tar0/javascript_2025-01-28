@@ -1,27 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Trigger Input</title>
-</head>
+<html>
 <body>
-
-    <input type="text" id="numInput" maxlength="3" placeholder="Enter 3 digits">
-
+    <h1>Shared Data:</h1>
+    <input type="text" id="sharedData" placeholder="Enter some data" required />
+    <button type="submit">Save Data</button>
     <script>
-        document.getElementById("numInput").addEventListener("input", function () {
-            let value = this.value;
-            if (value.length === 3) {
-                myFunction(value);
-            }
+        console.log('Hello from the front-end!');
+        document.querySelector('button').addEventListener('click', () => {
+            const data = document.getElementById('sharedData').value;
+
+            fetch('/save-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ data }) // sendin' that juicy data 🍉
+            })
+            .then(res => res.text())
+            .then(msg => alert(msg)); // show the success message 🥳
         });
-
-        function myFunction(val) {
-            alert("You entered: " + val);
-            // You can replace alert with any other function logic
-        }
     </script>
-
 </body>
 </html>

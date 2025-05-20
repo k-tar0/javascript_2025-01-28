@@ -24,12 +24,23 @@ td {
     text-align: center;
     height: 30px;
 }
-form{
+form {
     margin-top: 30px;
-    button {
-        font-size: 20px;
-        padding: 3px 20px;
-    }
+    width: 100%;
+}
+
+.buttonGroup {
+    display: flex;
+    width: 100%;
+}
+
+.buttonGroup button {
+    flex: 1;
+    font-size: 16px;
+    padding: 5px; 
+    text-align: center;
+    border: 1px solid gray;
+    margin: 0 2px;
 }
 
 #canvas {
