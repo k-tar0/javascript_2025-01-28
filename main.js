@@ -43,10 +43,12 @@ document.getElementById("numInput").addEventListener("input", function() {
     if (value.length === 3) {
         console.log(value);
         document.querySelectorAll("#floorTable tbody").forEach(tbody => tbody.remove());
+        value = parseInt(value, 10);
         allRoomsAndTime.push([value, shownTime]);
         sortedRooms = sortRooms(floorNames, wingNames, allRoomsAndTime, dinnerTimes);
         roomsToTable(floorNames, wingNames, sortedRooms, shownTime);
         this.value = "";
+        console.log(allRoomsAndTime);
     }
 });
 
