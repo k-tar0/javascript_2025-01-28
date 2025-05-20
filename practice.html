@@ -6,6 +6,19 @@
     <button type="submit">Save Data</button>
     <script>
         console.log('Hello from the front-end!');
+        document.querySelector('button').addEventListener('click', () => {
+            const data = document.getElementById('sharedData').value;
+
+            fetch('/save-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ data }) // sendin' that juicy data 🍉
+            })
+            .then(res => res.text())
+            .then(msg => alert(msg)); // show the success message 🥳
+        });
     </script>
 </body>
 </html>

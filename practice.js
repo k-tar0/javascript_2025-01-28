@@ -9,7 +9,5 @@ app.post('/save-data', (req, res) => {
     console.log('Data received:', req.body.data);
     res.send('Data saved successfully!');
 });
-
-console.log(module);
     
 app.listen(4000, () => console.log('Server running on http://localhost:4000'));
