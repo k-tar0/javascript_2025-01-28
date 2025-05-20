@@ -24,3 +24,5 @@ export const makeForm = (dinnerTime) => {
 
     document.body.appendChild(form);
 };
+
+console.log("Your friend is here! help me!");
