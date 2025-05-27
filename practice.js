@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-app.use(express.static(path.join(__dirname))); // 静的ファイルを提供
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json()); 
     
 app.post('/save-data', (req, res) => {
@@ -10,4 +10,4 @@ app.post('/save-data', (req, res) => {
     res.send('Data saved successfully!');
 });
     
-app.listen(4000, () => console.log('Server running on http://localhost:4000'));
+app.listen(3000, () => console.log('Server running on http://localhost:3000'));
