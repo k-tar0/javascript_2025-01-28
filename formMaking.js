@@ -9,17 +9,17 @@ export const makeForm = (dinnerTime) => {
     dinnerTime.forEach(time => div.appendChild(createButton(`table${time}`, time)));
     form.appendChild(div);
 
-    form.append(document.createElement("br"), document.createElement("br"));
+    form.append(document.createElement("br"), document.createElement("br")); //空白
 
     form.appendChild(Object.assign(document.createElement("label"), { textContent: "部屋番号を入力:" }));
     form.appendChild(Object.assign(document.createElement("input"), { type: "text", id: "numInput", maxLength: 3, placeholder: "Enter 3 digits" }));
 
-    form.append(document.createElement("br"))
-    
-
-    form.append(document.createElement("br"), document.createElement("br"));
+    for (let i = 0; i < 3; i++) {
+        form.append(document.createElement("br"));//空白
+    }
 
     form.appendChild(createButton("calculate", "ルートの計算"));
+    form.appendChild(createButton("reset", "リセット"));
 
     document.body.appendChild(form);
 };

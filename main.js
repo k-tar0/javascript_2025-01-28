@@ -55,4 +55,12 @@ document.getElementById("numInput").addEventListener("input", function() {
 document.getElementById("calculate").addEventListener('click', () => {
     drawLines();
 });
+
+document.getElementById("reset").addEventListener('click', () => {
+    document.querySelectorAll("#floorTable tbody").forEach(tbody => tbody.remove());
+    allRoomsAndTime.length = 0; // Reset the array
+    sortedRooms = sortRooms(floorNames, wingNames, allRoomsAndTime, dinnerTimes);
+    roomsToTable(floorNames, wingNames, sortedRooms, shownTime);
+    document.getElementById("numInput").value = "";
+});
 console.log(sortedRooms);
