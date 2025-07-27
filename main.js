@@ -1,5 +1,5 @@
 import { addTitle, sortRooms, roomsToTable } from "./tablemaking.js";
-import { drawLines } from "./routeMaking.js";
+//port { drawLines } from "./routeMaking.js";//
 import { makeForm } from "./formMaking.js";
 
 const allRoomsAndTime = [
@@ -49,7 +49,7 @@ document.getElementById("numInput").addEventListener("input", function() {
     }
 });
 
-document.getElementById("calculate").addEventListener('click', () => {
-    drawLines();
-});
-console.log(sortedRooms);
+// document.getElementById("calculate").addEventListener('click', () => {
+//     drawLines();
+// });
+// console.log(sortedRooms);

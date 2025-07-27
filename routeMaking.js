@@ -1,45 +1,47 @@
-export const drawLines = () => {
-    const cellPositions = {};
+  //No need to edit the code below.
 
-    const canvas = document.getElementById("canvas");
-    const context = canvas.getContext("2d");
+// export const drawLines = () => {
+//     const cellPositions = {};
 
-    const devicePixelRatio = window.devicePixelRatio || 1;
+//     const canvas = document.getElementById("canvas");
+//     const context = canvas.getContext("2d");
 
-    function resizeCanvas() {
-        canvas.width = canvas.clientWidth * devicePixelRatio;
-        canvas.height = canvas.clientHeight * devicePixelRatio;
-        context.scale(devicePixelRatio, devicePixelRatio);
-    }
+//     const devicePixelRatio = window.devicePixelRatio || 1;
 
-    resizeCanvas();
+//     function resizeCanvas() {
+//         canvas.width = canvas.clientWidth * devicePixelRatio;
+//         canvas.height = canvas.clientHeight * devicePixelRatio;
+//         context.scale(devicePixelRatio, devicePixelRatio);
+//     }
 
-    context.lineWidth = 2 / devicePixelRatio;
-    document.querySelectorAll("td").forEach((cell, index) => {
-        const rect = cell.getBoundingClientRect();
-        const canvasRect = canvas.getBoundingClientRect();
+//     resizeCanvas();
 
-        const floor = Math.floor(index / 3);
-        const wing = index % 3;
+//     context.lineWidth = 2 / devicePixelRatio;
+//     document.querySelectorAll("td").forEach((cell, index) => {
+//         const rect = cell.getBoundingClientRect();
+//         const canvasRect = canvas.getBoundingClientRect();
 
-        if (!cellPositions[floor]) {
-            cellPositions[floor] = {};
-        }
+//         const floor = Math.floor(index / 3);
+//         const wing = index % 3;
 
-        cellPositions[floor][wing] = 
-        { X: (rect.left + rect.right) / 2 - canvasRect.left,
-        Y: (rect.top + rect.bottom) / 2 - canvasRect.top };
-    });
+//         if (!cellPositions[floor]) {
+//             cellPositions[floor] = {};
+//         }
 
-    context.beginPath();
-    context.moveTo(cellPositions[0][0].X, cellPositions[0][0].Y);
-    context.lineTo(cellPositions[0][2].X, cellPositions[0][2].Y);
-    context.strokeStyle = "rgba(255, 0, 0, 0.5)";
-    context.lineWidth = 3; 
-    context.stroke();
-    context.closePath();
-}
+//         cellPositions[floor][wing] = 
+//         { X: (rect.left + rect.right) / 2 - canvasRect.left,
+//         Y: (rect.top + rect.bottom) / 2 - canvasRect.top };
+//     });
 
-function classifyLiftStop(sortedRooms) {
-    sortedRooms
-}
+//     context.beginPath();
+//     context.moveTo(cellPositions[0][0].X, cellPositions[0][0].Y);
+//     context.lineTo(cellPositions[0][2].X, cellPositions[0][2].Y);
+//     context.strokeStyle = "rgba(255, 0, 0, 0.5)";
+//     context.lineWidth = 3; 
+//     context.stroke();
+//     context.closePath();
+// }
+
+// function classifyLiftStop(sortedRooms) {
+//     sortedRooms
+// }
